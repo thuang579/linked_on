@@ -4,6 +4,10 @@ class UsersController < ApplicationController
 		@users = User.all
 	end
 
+	def show
+		@user = User.find(params[:id])
+	end
+
 	def new
 		@user = User.new
 	end
@@ -17,13 +21,12 @@ class UsersController < ApplicationController
 			flash[:notice] = @user.errors.full_sentences.to_sentence
 			render :new
 		end
-
 	end
 
 	private
 
 	def user_params
-		params.require(:user).permit(:name, :email, :organization_id)
+		params.require(:user).permit(:name, :email, :password, :password_confirmation, :organization_id)
 	end
 
 
