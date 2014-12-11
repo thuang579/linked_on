@@ -8,7 +8,7 @@ class SessionController < ApplicationController
 		if @user && @user.authenticate(params[:password])
 			session[:user_id] = user.user_id
 			# new king of hash! like params has and flash hash
-			redirect_to root_path, , notice: "You'relogged in"
+			redirect_to root_path, notice: "You'relogged in"
 		else
 			redirect_to '/login', notice: "You're not logged in"
 		end
